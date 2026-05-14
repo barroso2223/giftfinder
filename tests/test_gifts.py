@@ -35,3 +35,23 @@ def test_get_gifts_multiple_interests():
 def test_get_gifts_invalid_interests():
     results = get_gifts(["invalid"], 50)
     assert results == []
+
+
+def test_budget_too_low_returns_empty():
+    results = get_gifts(["tech"], 5)
+    assert results == []
+
+
+def test_get_gifts_music_returns():
+    results = get_gifts(["music"], 50)
+    assert len(results) > 0
+
+
+def test_amazon_url_startswith_https():
+    url = build_amazon_url("wireless earbuds")
+    assert url.startswith("https://")
+
+
+def test_amazon_url_has_yoga_mat():
+    url = build_amazon_url("yoga mat")
+    assert "yoga+mat" in url
