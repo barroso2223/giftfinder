@@ -19,4 +19,4 @@ jobs:
         run: pip install -r backend/requirements.txt
 
       - name: Run Tests
-        run: pytest test/test_gifts.py -v
+        run: pytest tests/test_gifts.py -v
