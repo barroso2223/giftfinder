@@ -1129,6 +1129,23 @@ footer a:hover {
   color: #ff9de2;
 }
 
+.budget-input {
+  width: 70px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+
+.budget-input:focus {
+  border-color: rgba(200, 182, 255, 0.5);
+}
+
 @media (max-width: 480px) {
   .form-row {
     grid-template-columns: 1fr;

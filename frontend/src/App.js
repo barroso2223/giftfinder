@@ -828,13 +828,31 @@ function PersonForm({ person, onSave, onCancel, isPersonalized = false }) {
 
       <div className="form-group">
         <label>Budget: ${form.budget}</label>
-        <input
-          type="range"
-          min="10"
-          max="200"
-          value={form.budget}
-          onChange={(e) => setForm({ ...form, budget: Number(e.target.value) })}
-        />
+        <div className="budget">
+          <input
+            type="range"
+            min="10"
+            max="500"
+            step="5"
+            value={form.budget}
+            onChange={(e) =>
+              setForm({ ...form, budget: Number(e.target.value) })
+            }
+          />
+          <input
+            type="number"
+            className="budget-input"
+            min="10"
+            max="500"
+            value={form.budget}
+            onChange={(e) =>
+              setForm({
+                ...form,
+                budget: Math.min(500, Math.max(10, Number(e.target.value))),
+              })
+            }
+          />
+        </div>
       </div>
 
       <div className="form-group">
@@ -1021,11 +1039,21 @@ function App() {
               <input
                 type="range"
                 min="10"
-                max="200"
+                max="500"
+                step="5"
                 value={budget}
                 onChange={(e) => setBudget(Number(e.target.value))}
               />
-              <span>${budget}</span>
+              <input
+                type="number"
+                className="budget-input"
+                min="10"
+                max="500"
+                value={budget}
+                onChange={(e) =>
+                  setBudget(Math.min(500, Math.max(10, Number(e.target.value))))
+                }
+              />
             </div>
             <button
               className="search-btn"
