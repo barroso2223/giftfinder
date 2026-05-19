@@ -832,7 +832,7 @@ function parseNotesToGifts(notes, age, gender, budget) {
   return gifts.slice(0, 8); // max 8 dynamic results
 }
 
-function getCuratedGifts(interests, budget) {
+function getCuratedGifts(interests, budgetMin, budgetMax) {
   const results = [];
   const seen = new Set();
   for (const interest of interests) {
@@ -842,7 +842,14 @@ function getCuratedGifts(interests, budget) {
         const minPrice = parseInt(
           gift.price_range.split("-")[0].replace("$", ""),
         );
-        if (minPrice <= budget && !seen.has(gift.name)) {
+        const maxPrice = parseInt(
+          gift.price_range.split("-")[1].replace("$", ""),
+        );
+        if (
+          minPrice <= budgetMax &&
+          maxPrice >= budgetMin &&
+          !seen.has(gift.name)
+        ) {
           seen.add(gift.name);
           results.push({
             ...gift,
@@ -859,17 +866,14 @@ function getCuratedGifts(interests, budget) {
 function getPersonalizedGifts(form) {
   const {
     interests = [],
-    budget = 50,
+    budgetMin = 10,
+    budgetMax = 100,
     age = "",
     gender = "",
     notes = "",
   } = form;
-
-  // Dynamic gifts from notes — always first
-  const dynamicGifts = parseNotesToGifts(notes, age, gender, budget);
-
-  // Curated gifts from interests
-  const curatedGifts = getCuratedGifts(interests, budget);
+  const dynamicGifts = parseNotesToGifts(notes, age, gender, budgetMax);
+  const curatedGifts = getCuratedGifts(interests, budgetMin, budgetMax);
 
   // Merge — dynamic first, then curated, deduplicated, max 10
   const seen = new Set(dynamicGifts.map((g) => g.name));
@@ -932,7 +936,8 @@ function PersonForm({ person, onSave, onCancel, isPersonalized = false }) {
       gender: "",
       occasion: "",
       interests: [],
-      budget: 50,
+      budgetMin: 10,
+      budgetMax: 100,
       birthday: "",
       notes: "",
     },
@@ -1056,31 +1061,97 @@ function PersonForm({ person, onSave, onCancel, isPersonalized = false }) {
       </div>
 
       <div className="form-group">
-        <label>Budget: ${form.budget}</label>
-        <div className="budget">
-          <input
-            type="range"
-            min="10"
-            max="500"
-            step="5"
-            value={form.budget}
-            onChange={(e) =>
-              setForm({ ...form, budget: Number(e.target.value) })
-            }
-          />
-          <input
-            type="number"
-            className="budget-input"
-            min="10"
-            max="500"
-            value={form.budget}
-            onChange={(e) =>
-              setForm({
-                ...form,
-                budget: Math.min(500, Math.max(10, Number(e.target.value))),
-              })
-            }
-          />
+        <div className="form-group">
+          <label>Budget Range</label>
+          <div className="budget-range">
+            <div className="budget-row">
+              <div className="budget-field">
+                <label>Min</label>
+                <input
+                  type="number"
+                  className="budget-input"
+                  min="0"
+                  max={(form.budgetMax || 100) - 5}
+                  value={form.budgetMin || 10}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      budgetMin: Math.min(
+                        (form.budgetMax || 100) - 5,
+                        Math.max(0, Number(e.target.value)),
+                      ),
+                    })
+                  }
+                />
+              </div>
+              <div className="budget-field">
+                <label>Max</label>
+                <input
+                  type="number"
+                  className="budget-input"
+                  min={(form.budgetMin || 10) + 5}
+                  max="500"
+                  value={form.budgetMax || 100}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      budgetMax: Math.min(
+                        500,
+                        Math.max(
+                          (form.budgetMin || 10) + 5,
+                          Number(e.target.value),
+                        ),
+                      ),
+                    })
+                  }
+                />
+              </div>
+            </div>
+            <div className="budget-sliders">
+              <div className="slider-row">
+                <span className="slider-label">
+                  Min: ${form.budgetMin || 10}
+                </span>
+                <input
+                  type="range"
+                  min="0"
+                  max="500"
+                  step="5"
+                  value={form.budgetMin || 10}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      budgetMin: Math.min(
+                        Number(e.target.value),
+                        (form.budgetMax || 100) - 5,
+                      ),
+                    })
+                  }
+                />
+              </div>
+              <div className="slider-row">
+                <span className="slider-label">
+                  Max: ${form.budgetMax || 100}
+                </span>
+                <input
+                  type="range"
+                  min="0"
+                  max="500"
+                  step="5"
+                  value={form.budgetMax || 100}
+                  onChange={(e) =>
+                    setForm({
+                      ...form,
+                      budgetMax: Math.max(
+                        Number(e.target.value),
+                        (form.budgetMin || 10) + 5,
+                      ),
+                    })
+                  }
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1130,7 +1201,8 @@ function PersonForm({ person, onSave, onCancel, isPersonalized = false }) {
 function App() {
   const [activeTab, setActiveTab] = useState("find");
   const [selected, setSelected] = useState([]);
-  const [budget, setBudget] = useState(50);
+  const [budgetMin, setBudgetMin] = useState(10);
+  const [budgetMax, setBudgetMax] = useState(100);
   const [gifts, setGifts] = useState([]);
   const [searched, setSearched] = useState(false);
   const [people, setPeople] = useState(() => {
@@ -1154,17 +1226,23 @@ function App() {
     if (!selected.length) return;
     if (giftingFor) {
       setGifts(
-        getPersonalizedGifts({ ...giftingFor, interests: selected, budget }),
+        getPersonalizedGifts({
+          ...giftingFor,
+          interests: selected,
+          budgetMin,
+          budgetMax,
+        }),
       );
     } else {
-      setGifts(getCuratedGifts(selected, budget));
+      setGifts(getCuratedGifts(selected, budgetMin, budgetMax));
     }
     setSearched(true);
   };
 
   const findGiftsForPerson = (person) => {
     setSelected(person.interests.length ? person.interests : []);
-    setBudget(person.budget || 50);
+    setBudgetMin(person.budgetMin || 10);
+    setBudgetMax(person.budgetMax || 100);
     setGiftingFor(person);
     setActiveTab("find");
     setGifts(getPersonalizedGifts(person));
@@ -1263,26 +1341,78 @@ function App() {
                 </button>
               ))}
             </div>
-            <h2>Budget</h2>
-            <div className="budget">
-              <input
-                type="range"
-                min="10"
-                max="500"
-                step="5"
-                value={budget}
-                onChange={(e) => setBudget(Number(e.target.value))}
-              />
-              <input
-                type="number"
-                className="budget-input"
-                min="10"
-                max="500"
-                value={budget}
-                onChange={(e) =>
-                  setBudget(Math.min(500, Math.max(10, Number(e.target.value))))
-                }
-              />
+            <h2>Budget Range</h2>
+            <div className="budget-range">
+              <div className="budget-row">
+                <div className="budget-field">
+                  <label>Min</label>
+                  <input
+                    type="number"
+                    className="budget-input"
+                    min="0"
+                    max={budgetMax - 5}
+                    value={budgetMin}
+                    onChange={(e) =>
+                      setBudgetMin(
+                        Math.min(
+                          budgetMax - 5,
+                          Math.max(0, Number(e.target.value)),
+                        ),
+                      )
+                    }
+                  />
+                </div>
+                <div className="budget-field">
+                  <label>Max</label>
+                  <input
+                    type="number"
+                    className="budget-input"
+                    min={budgetMin + 5}
+                    max="500"
+                    value={budgetMax}
+                    onChange={(e) =>
+                      setBudgetMax(
+                        Math.min(
+                          500,
+                          Math.max(budgetMin + 5, Number(e.target.value)),
+                        ),
+                      )
+                    }
+                  />
+                </div>
+              </div>
+              <div className="budget-sliders">
+                <div className="slider-row">
+                  <span className="slider-label">Min: ${budgetMin}</span>
+                  <input
+                    type="range"
+                    min="5"
+                    max="500"
+                    step="5"
+                    value={budgetMin}
+                    onChange={(e) =>
+                      setBudgetMin(
+                        Math.min(Number(e.target.value), budgetMax - 5),
+                      )
+                    }
+                  />
+                </div>
+                <div className="slider-row">
+                  <span className="slider-label">Max: ${budgetMax}</span>
+                  <input
+                    type="range"
+                    min="5"
+                    max="500"
+                    step="5"
+                    value={budgetMax}
+                    onChange={(e) =>
+                      setBudgetMax(
+                        Math.max(Number(e.target.value), budgetMin + 5),
+                      )
+                    }
+                  />
+                </div>
+              </div>
             </div>
             <button
               className="search-btn"
