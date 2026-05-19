@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0f1035"/>
+    </linearGradient>
+    <linearGradient id="rib4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8b6ff"/>
+      <stop offset="100%" stop-color="#ff9de2"/>
+    </linearGradient>
+    <linearGradient id="box4" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="lid4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <clipPath id="gc4">
+      <circle cx="340" cy="340" r="230"/>
+    </clipPath>
+  </defs>
+  <rect width="680" height="680" rx="80" fill="url(#bg4)"/>
+  <circle cx="340" cy="340" r="230" fill="#1c1c3e"/>
+  <g clip-path="url(#gc4)">
+    <rect x="196" y="370" width="288" height="180" rx="16" fill="url(#box4)"/>
+    <rect x="180" y="332" width="320" height="52" rx="12" fill="url(#lid4)"/>
+    <rect x="321" y="332" width="38" height="218" fill="url(#rib4)" opacity="0.92"/>
+    <path d="M 340 318 C 314 300, 244 256, 186 240 C 162 232, 146 244, 152 262 C 158 280, 194 284, 232 286 C 270 288, 316 302, 340 318 Z" fill="#ff9de2"/>
+    <path d="M 334 310 C 308 294, 248 262, 202 250 C 184 244, 174 252, 178 262" fill="none" stroke="#ffd6f0" stroke-width="7" stroke-linecap="round" opacity="0.45"/>
+    <path d="M 340 318 C 366 300, 436 256, 494 240 C 518 232, 534 244, 528 262 C 522 280, 486 284, 448 286 C 410 288, 364 302, 340 318 Z" fill="#c8b6ff"/>
+    <path d="M 346 310 C 372 294, 432 262, 478 250 C 496 244, 506 252, 502 262" fill="none" stroke="#e8dcff" stroke-width="7" stroke-linecap="round" opacity="0.45"/>
+    <path d="M 334 322 C 318 328, 296 334, 282 340 L 298 340 C 310 335, 328 328, 340 324 Z" fill="#ff9de2" opacity="0.85"/>
+    <path d="M 346 322 C 362 328, 384 334, 398 340 L 382 340 C 370 335, 352 328, 340 324 Z" fill="#c8b6ff" opacity="0.85"/>
+    <circle cx="340" cy="308" r="22" fill="url(#rib4)"/>
+    <circle cx="340" cy="308" r="11" fill="#fff" opacity="0.2"/>
+  </g>
+  <circle cx="340" cy="340" r="230" fill="none" stroke="url(#rib4)" stroke-width="22"/>
+  <line x1="528" y1="528" x2="622" y2="622" stroke="url(#rib4)" stroke-width="40" stroke-linecap="round"/>
+  <line x1="534" y1="534" x2="606" y2="606" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0.18"/>
+  <circle cx="110" cy="108" r="8" fill="#c8b6ff" opacity="0.6"/>
+  <circle cx="580" cy="92" r="6" fill="#ff9de2" opacity="0.5"/>
+  <circle cx="608" cy="160" r="4" fill="#c8b6ff" opacity="0.4"/>
+  <circle cx="88" cy="196" r="5" fill="#ff9de2" opacity="0.4"/>
+</svg>

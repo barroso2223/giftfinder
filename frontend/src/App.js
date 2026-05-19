@@ -1282,8 +1282,8 @@ function App() {
     <div className="app">
       <header>
         <h1>
-          <img src="/logo192.png" alt="GiftFinder" className="header-logo" />
-        GiftFinder
+          <img src="/logo192.png" alt="GiftFindly" className="header-logo" />
+          GiftFindly
         </h1>
         <p>Find the perfect gift for anyone</p>
       </header>
