@@ -1206,7 +1206,7 @@ function App() {
   const [gifts, setGifts] = useState([]);
   const [searched, setSearched] = useState(false);
   const [people, setPeople] = useState(() => {
-    const s = localStorage.getItem("giftfinder-people");
+    const s = localStorage.getItem("giftfindly-people");
     return s ? JSON.parse(s) : [];
   });
   const [showForm, setShowForm] = useState(false);
@@ -1214,7 +1214,7 @@ function App() {
   const [giftingFor, setGiftingFor] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem("giftfinder-people", JSON.stringify(people));
+    localStorage.setItem("giftfindly-people", JSON.stringify(people));
   }, [people]);
 
   const toggleInterest = (i) =>
