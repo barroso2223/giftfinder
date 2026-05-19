@@ -260,6 +260,12 @@ const GIFT_CATEGORIES = {
       price_range: "$25-$60",
       search: "trekking poles collapsible",
     },
+
+    {
+      name: "Fishing Poles",
+      price_range: "$25-$60",
+      search: "fishing poles",
+    },
     {
       name: "Waterproof Phone Pouch",
       price_range: "$8-$15",
