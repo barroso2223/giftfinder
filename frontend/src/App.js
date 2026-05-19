@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const AFFILIATE_TAG = "barroso093-20";
-const APP_URL = "https://barroso2223.github.io/giftfinder";
+const APP_URL = "https://gifts.barrosodigital.website";
 
 const buildAmazonUrl = (search) => {
   const query = search.replace(/ /g, "+");
