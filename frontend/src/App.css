@@ -60,15 +60,20 @@ header {
   padding: 50px 0 36px;
 }
 
+.header-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  vertical-align: middle;
+  margin-right: 1px;
+  display: inline-block;
+}
+
 header h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(135deg, #fff 0%, #c8b6ff 50%, #ff9de2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 header p {
