@@ -81,6 +81,28 @@ const GIFT_CATEGORIES = {
       price_range: "$20-$35",
       search: "tile bluetooth tracker",
     },
+    { name: "iPad", price_range: "$300-$500", search: "ipad 10th generation" },
+    { name: "AirPods Pro", price_range: "$200-$250", search: "airpods pro" },
+    {
+      name: "Nintendo Switch",
+      price_range: "$250-$300",
+      search: "nintendo switch console",
+    },
+    {
+      name: "Instant Camera",
+      price_range: "$80-$150",
+      search: "instax mini camera",
+    },
+    {
+      name: "Smart Home Hub",
+      price_range: "$100-$200",
+      search: "smart home hub alexa",
+    },
+    {
+      name: "Noise Canceling Headphones",
+      price_range: "$150-$350",
+      search: "noise canceling headphones",
+    },
   ],
   gaming: [
     {
@@ -124,6 +146,26 @@ const GIFT_CATEGORIES = {
       name: "Retro Mini Console",
       price_range: "$25-$50",
       search: "retro mini game console",
+    },
+    {
+      name: "PS5 Controller",
+      price_range: "$70-$80",
+      search: "ps5 dualsense controller",
+    },
+    {
+      name: "Gaming Chair",
+      price_range: "$150-$400",
+      search: "gaming chair ergonomic",
+    },
+    {
+      name: "Gaming Monitor",
+      price_range: "$150-$400",
+      search: "gaming monitor 144hz",
+    },
+    {
+      name: "VR Headset",
+      price_range: "$300-$500",
+      search: "meta quest vr headset",
     },
   ],
   fitness: [
@@ -169,6 +211,26 @@ const GIFT_CATEGORIES = {
       price_range: "$20-$45",
       search: "pull up bar doorway",
     },
+    {
+      name: "Adjustable Dumbbells",
+      price_range: "$150-$300",
+      search: "adjustable dumbbells set",
+    },
+    {
+      name: "Smart Scale",
+      price_range: "$30-$60",
+      search: "smart body scale wifi",
+    },
+    {
+      name: "Rowing Machine",
+      price_range: "$200-$500",
+      search: "rowing machine home gym",
+    },
+    {
+      name: "Peloton App Subscription",
+      price_range: "$150-$200",
+      search: "peloton bike accessories",
+    },
   ],
   cooking: [
     {
@@ -212,6 +274,26 @@ const GIFT_CATEGORIES = {
       name: "Meal Prep Containers",
       price_range: "$15-$30",
       search: "meal prep containers set",
+    },
+    {
+      name: "KitchenAid Stand Mixer",
+      price_range: "$300-$500",
+      search: "kitchenaid stand mixer",
+    },
+    {
+      name: "Vitamix Blender",
+      price_range: "$300-$500",
+      search: "vitamix blender professional",
+    },
+    {
+      name: "Instant Pot",
+      price_range: "$60-$120",
+      search: "instant pot pressure cooker",
+    },
+    {
+      name: "Wine Cooler",
+      price_range: "$100-$300",
+      search: "wine cooler refrigerator",
     },
   ],
   outdoors: [
@@ -271,6 +353,26 @@ const GIFT_CATEGORIES = {
       price_range: "$8-$15",
       search: "waterproof phone pouch",
     },
+    {
+      name: "Camping Tent",
+      price_range: "$80-$300",
+      search: "camping tent 4 person",
+    },
+    {
+      name: "Kayak Paddle Set",
+      price_range: "$100-$250",
+      search: "kayak paddle set",
+    },
+    {
+      name: "Drone",
+      price_range: "$150-$500",
+      search: "drone with camera beginner",
+    },
+    {
+      name: "Portable Power Station",
+      price_range: "$150-$400",
+      search: "portable power station camping",
+    },
   ],
   books: [
     {
@@ -313,6 +415,31 @@ const GIFT_CATEGORIES = {
       price_range: "$15-$30",
       search: "audible gift card",
     },
+    {
+      name: "Kindle Scribe",
+      price_range: "$200-$300",
+      search: "kindle scribe ereader",
+    },
+    {
+      name: "Book Subscription Box 3 months",
+      price_range: "$80-$150",
+      search: "book subscription box 3 month gift",
+    },
+    {
+      name: "Rare Collector Book",
+      price_range: "$100-$500",
+      search: "rare collector edition book signed",
+    },
+    {
+      name: "Complete Book Series Set",
+      price_range: "$50-$150",
+      search: "complete book series box set",
+    },
+    {
+      name: "Bookshelf Organizer",
+      price_range: "$80-$200",
+      search: "bookshelf organizer wall mounted",
+    },
   ],
   music: [
     {
@@ -345,6 +472,46 @@ const GIFT_CATEGORIES = {
       name: "Music Theory Book",
       price_range: "$10-$20",
       search: "music theory book beginner",
+    },
+    {
+      name: "Electric Guitar Starter Pack",
+      price_range: "$150-$300",
+      search: "electric guitar starter pack beginner",
+    },
+    {
+      name: "Acoustic Guitar",
+      price_range: "$100-$300",
+      search: "acoustic guitar beginner",
+    },
+    {
+      name: "MIDI Keyboard Controller",
+      price_range: "$80-$200",
+      search: "midi keyboard controller 49 keys",
+    },
+    {
+      name: "Audio Interface",
+      price_range: "$100-$200",
+      search: "audio interface recording home studio",
+    },
+    {
+      name: "Studio Monitor Speakers",
+      price_range: "$150-$400",
+      search: "studio monitor speakers pair",
+    },
+    {
+      name: "Drum Practice Pad Set",
+      price_range: "$50-$150",
+      search: "drum practice pad set beginner",
+    },
+    {
+      name: "Karaoke Machine",
+      price_range: "$80-$200",
+      search: "karaoke machine bluetooth",
+    },
+    {
+      name: "Record Player",
+      price_range: "$80-$250",
+      search: "record player turntable vinyl",
     },
   ],
   art: [
@@ -382,6 +549,36 @@ const GIFT_CATEGORIES = {
       name: "Adult Coloring Book",
       price_range: "$8-$15",
       search: "adult coloring book stress relief",
+    },
+    {
+      name: "Professional Drawing Tablet",
+      price_range: "$150-$400",
+      search: "wacom drawing tablet professional",
+    },
+    {
+      name: "Cricut Maker Machine",
+      price_range: "$200-$400",
+      search: "cricut maker machine crafts",
+    },
+    {
+      name: "Art Easel Set",
+      price_range: "$80-$200",
+      search: "art easel set professional",
+    },
+    {
+      name: "Oil Paint Set Professional",
+      price_range: "$60-$150",
+      search: "professional oil paint set artist",
+    },
+    {
+      name: "Digital Camera",
+      price_range: "$200-$500",
+      search: "digital camera beginner mirrorless",
+    },
+    {
+      name: "Lightbox Tracing Pad",
+      price_range: "$30-$80",
+      search: "lightbox tracing pad artist",
     },
   ],
   kids: [
@@ -486,6 +683,32 @@ const GIFT_CATEGORIES = {
       price_range: "$15-$40",
       search: "kids karate martial arts set",
     },
+    {
+      name: "Electric Ride-On Car",
+      price_range: "$150-$400",
+      search: "kids electric ride on car",
+    },
+    {
+      name: "Telescope",
+      price_range: "$50-$150",
+      search: "telescope kids beginner",
+    },
+    {
+      name: "Drone for Kids",
+      price_range: "$50-$150",
+      search: "drone for kids beginner",
+    },
+    {
+      name: "VR Headset Kids",
+      price_range: "$50-$100",
+      search: "vr headset kids",
+    },
+    {
+      name: "Trampoline",
+      price_range: "$150-$400",
+      search: "trampoline kids outdoor",
+    },
+    { name: "Go Kart", price_range: "$200-$500", search: "go kart kids pedal" },
   ],
 };
 
