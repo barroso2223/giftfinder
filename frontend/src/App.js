@@ -1283,7 +1283,7 @@ function App() {
       <header>
         <h1>
           <img src="/logo192.png" alt="GiftFindly" className="header-logo" />
-          GiftFindly
+          Gift<span>Findly</span>
         </h1>
         <p>Find the perfect gift for anyone</p>
       </header>

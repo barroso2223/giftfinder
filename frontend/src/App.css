@@ -76,6 +76,15 @@ header h1 {
   gap: 5px;
 }
 
+header h1 span {
+  background: linear-gradient(90deg, #8039e8 10%, #d5287e 90%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 header p {
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.6);
