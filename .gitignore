@@ -1,7 +1,40 @@
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .pytest_cache/
-node_modules/
 .env
+venv/
+*.egg-info/
 dist/
 build/
+
+# Node / React
+node_modules/
+npm-debug.log*
+.npm
+
+# Build outputs
+frontend/build/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+jmeter.log
+
+# Secrets
+.env
+.env.local
+.env.production
